@@ -1,35 +1,25 @@
+
+
+-----------------------------------
+/* Tworzenie bazy                */
+-----------------------------------
+
 USE [master];
---USE [HealthcareBI];
 GO
 
-IF EXISTS (SELECT * FROM sys.databases WHERE name = 'testowaDB')
+IF EXISTS (SELECT * FROM sys.databases WHERE name = 'HealthcareBI')
 BEGIN
-    DROP DATABASE testowaDB;  
+    DROP DATABASE HealthcareBI;  
 END;
-	CREATE DATABASE testowaDB;
+	CREATE DATABASE HealthcareBI;
 GO
-	USE testowaDB
+	USE HealthcareBI
 GO
 
-----------------------
---SELECT
---	QUOTENAME(DB_NAME(database_id))   
---    + N'.'   
---    + QUOTENAME(OBJECT_SCHEMA_NAME(object_id, database_id))   
---    + N'.'   
---    + QUOTENAME(OBJECT_NAME(object_id, database_id))  
---    , *   
---FROM sys.dm_db_index_operational_stats(null, null, null, null)
---WHERE 1=1
---	AND OBJECT_SCHEMA_NAME(	object_id, database_id) = 'Integration'
---	--DB_NAME NOT IN ('msdb', 'master', 'tempdb', 'Lab', 'lab2', 'Lab_wzorcowy','WideWorldImporters', 'WideWorldImportersDW')
---	--AND OBJECT_SCHEMA_NAME NOT IN ('sys')
---	;  
---GO  
 
--- select * from sys.schemas
+
 -----------------------------------------------
-/* Tworzy schematy na bazie                */
+/* Tworzenie schematÃ³w na bazie                */
 -----------------------------------------------
 
 IF EXISTS (SELECT name
@@ -71,7 +61,7 @@ GO
 
 
 ---------------------------------------------------
-/* --Sprawdzenie czy utworzy³y siê schematy      */
+/* --Sprawdzenie czy utworzyÅ‚y siÄ™ schematy      */
 ---------------------------------------------------
 
 --SELECT 
@@ -147,7 +137,7 @@ CREATE TABLE Integration.AnkietaDBStaging
 	[Wybierz szpital wieloprofilowy] varchar(100),
 	[Wybierz monoklinike] varchar(200),
 	[Czy_zebrano_ankiety] varchar(3),
-	[Uzasadnij dlaczego nie uda³o siê zebraæ ani jednej ankiety?] ntext,
+	[Uzasadnij dlaczego nie udaÅ‚o siÄ™ zebraÄ‡ ani jednej ankiety?] ntext,
 	[Ile_pacjentow_mezczyzn] varchar(5),
 	[Ile_pacjentow_kobiet] varchar(5),
 	[Ile_pacjentow_wiek18-29] varchar(5),
@@ -158,20 +148,20 @@ CREATE TABLE Integration.AnkietaDBStaging
 	[Ile_pacjentow_wyksztalcenie_podstawowe] varchar(5), 
 	[Ile_pacjentow_wyksztalcenie_srednie] varchar(5),
 	[Ile_pacjentow_wyksztalcenie_wyzsze] varchar(5),	
-	[Czas oczekiwania zwi¹zanego z przyjêciem do Szpitala (szybkoœæ za³atwienia formalnoœci)_ZD] varchar(5),
-	[Czas oczekiwania zwi¹zanego z przyjêciem do Szpitala (szybkoœæ za³atwienia formalnoœci)_RD] varchar(5),
-	[Czas oczekiwania zwi¹zanego z przyjêciem do Szpitala (szybkoœæ za³atwienia formalnoœci)_RZ] varchar(5),
-	[Czas oczekiwania zwi¹zanego z przyjêciem do Szpitala (szybkoœæ za³atwienia formalnoœci)_ZZ] varchar(5),
-	[Czas oczekiwania zwi¹zanego z przyjêciem do Szpitala (szybkoœæ za³atwienia formalnoœci)_ND] varchar(5),
-	[Organizacja sposobu przyjêcia do Szpitala_ZD] varchar(5),
-	[Organizacja sposobu przyjêcia do Szpitala_RD] varchar(5),
-	[Organizacja sposobu przyjêcia do Szpitala_RZ] varchar(5), 
-	[Organizacja sposobu przyjêcia do Szpitala_ZZ] varchar(5),
-	[Organizacja sposobu przyjêcia do Szpitala_ND] varchar(5),
-	[Czy poleci³/³aby Pan/Pani nasz Szpital swojej rodzinie, przyjacio³om lub znajomym?_ZT] varchar(5),
-	[Czy poleci³/³aby Pan/Pani nasz Szpital swojej rodzinie, przyjacio³om lub znajomym?_RT] varchar(5),
-	[Czy poleci³/³aby Pan/Pani nasz Szpital swojej rodzinie, przyjacio³om lub znajomym?_RN] varchar(5),
-	[Czy poleci³/³aby Pan/Pani nasz Szpital swojej rodzinie, przyjacio³om lub znajomym?_ZN] varchar(5),	
+	[Czas oczekiwania zwiÄ…zanego z przyjÄ™ciem do Szpitala (szybkoÅ›Ä‡ zaÅ‚atwienia formalnoÅ›ci)_ZD] varchar(5),
+	[Czas oczekiwania zwiÄ…zanego z przyjÄ™ciem do Szpitala (szybkoÅ›Ä‡ zaÅ‚atwienia formalnoÅ›ci)_RD] varchar(5),
+	[Czas oczekiwania zwiÄ…zanego z przyjÄ™ciem do Szpitala (szybkoÅ›Ä‡ zaÅ‚atwienia formalnoÅ›ci)_RZ] varchar(5),
+	[Czas oczekiwania zwiÄ…zanego z przyjÄ™ciem do Szpitala (szybkoÅ›Ä‡ zaÅ‚atwienia formalnoÅ›ci)_ZZ] varchar(5),
+	[Czas oczekiwania zwiÄ…zanego z przyjÄ™ciem do Szpitala (szybkoÅ›Ä‡ zaÅ‚atwienia formalnoÅ›ci)_ND] varchar(5),
+	[Organizacja sposobu przyjÄ™cia do Szpitala_ZD] varchar(5),
+	[Organizacja sposobu przyjÄ™cia do Szpitala_RD] varchar(5),
+	[Organizacja sposobu przyjÄ™cia do Szpitala_RZ] varchar(5), 
+	[Organizacja sposobu przyjÄ™cia do Szpitala_ZZ] varchar(5),
+	[Organizacja sposobu przyjÄ™cia do Szpitala_ND] varchar(5),
+	[Czy poleciÅ‚/Å‚aby Pan/Pani nasz Szpital swojej rodzinie, przyjacioÅ‚om lub znajomym?_ZT] varchar(5),
+	[Czy poleciÅ‚/Å‚aby Pan/Pani nasz Szpital swojej rodzinie, przyjacioÅ‚om lub znajomym?_RT] varchar(5),
+	[Czy poleciÅ‚/Å‚aby Pan/Pani nasz Szpital swojej rodzinie, przyjacioÅ‚om lub znajomym?_RN] varchar(5),
+	[Czy poleciÅ‚/Å‚aby Pan/Pani nasz Szpital swojej rodzinie, przyjacioÅ‚om lub znajomym?_ZN] varchar(5),	
 	);
  GO
 
@@ -456,26 +446,3 @@ CREATE TABLE Fact.Hospitalizacja
 	ON DELETE NO ACTION ON UPDATE CASCADE
 	);
 GO
-
-
---USE testoweDB;
---go
-
---DROP TABLE
-
-----[Dimension].[TrybWypisu],
-----[Fact].[Hospitalizacja],
---[Fact].[AnkietaPolecenieSzpitala],
---[Fact].[AnkietaPrzyjecieCzasOczekiwania],
---[Fact].[AnkietaPrzyjecieSposobOrganizacji],
---[Fact].[AnkietaWiek],
---[Fact].[AnkietaWyksztalcenie],
---[Dimension].[Placowka],
---[Dimension].[RodzajPlacowki],
---[Dimension].[DaneDokumentu],
---[Dimension].[Kalendarz]
-
-
---DROP SCHEMA IF EXISTS Integration
-
---;
